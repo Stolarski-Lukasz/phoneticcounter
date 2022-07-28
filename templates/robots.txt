@@ -1,0 +1,3 @@
+Sitemap: http://phoneticcounter.pythonanywhere.com/sitemap.xml
+User-agent:*
+Disallow:

@@ -1,0 +1,186 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-site-verification" content="SouBQwD-vjayqmjz-ohaEt6C0UI-hraX1AfZzaCPrjU" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap_customized.css' %}">
+  <link rel="stylesheet" href="{% static 'css/phonetic_counter.css' %}">
+  <!-- <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript" src="/eel.js"></script> -->
+  <title>Phonetic Counter</title>
+</head>
+
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-sm my_navbar">
+    <a class="navbar-brand">
+      <img src="{% static 'img/phonetic_counter.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+
+
+
+    <span class="navbar-text" style="color: #b6cc62">
+      Phonetic Counter
+    </span>
+
+
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#" id="close_link"></a>
+      </li> -->
+    </ul>
+
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropleft">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">About</a>
+          <a class="dropdown-item" href="{% static 'readme/readme.pdf' %}" target="_blank">Readme</a>
+        </div>
+      </li>
+    </ul>
+    <!-- </div> -->
+    <!-- <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="close_link">Quit</a>
+      </li>
+    </ul> -->
+  </nav>
+  <div class="col-xs-12" style="height:5px;"></div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Phonetic Counter</p>
+          <p>Ver. 1.0</p>
+          <p>Author: Łukasz Stolarski</p>
+          <p>August 2016</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Radiobuttons -->
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+
+      <div class="col-6 text-center">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+          <label class="custom-control-label" for="customRadioInline1" style="color: #b6cc62">Write text</label>
+        </div>
+      </div>
+      <div class="col-6 text-center align-self-center">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline2" style="color: #b6cc62">Load file</label>
+        </div>
+        <label class="btn btn-outline-dark btn-sm" id="load_button_label">Load txt file<input type="file" id="load_button" accept='text/plain' onchange='openFile(event)' hidden disabled>
+        </label>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6 text-center"></div>
+      <div class="col-sx-1" id="loaded_text_label">
+      </div>
+    </div>
+    <div class="col-xs-12" style="height:1px;"></div>
+
+    <!-- Input text window -->
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="9"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12" style="height:1px;"></div>
+
+    <!-- Action buttons and results -->
+    <div class="row align-items-center justify-content-around" id="low_panel">
+      <div class="col-5" id="buttons">
+        <div class="row justify-content-center" id="first_button">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_consonants_american">Count consonants for AmE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_consonants_british">Count consonants for BrE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_vowels_american">Count vowels for AmE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_vowels_british">Count vowels for BrE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_phonemes_american">Count phonemes for AmE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_phonemes_british">Count phonemes for BrE</button>
+        </div>
+        <div class="col-xs-12" style="height:3px;"></div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-block count_button" id="count_syllables">Count syllables</button>
+        </div>
+      </div>
+
+
+      <div class="col-5" id="results">
+
+        <div class="card text-center mb-3" style="min-height: 15rem;">
+          <div class="card-header">
+            Results:
+          </div>
+          <div class="card-body">
+            <p class="card-text" id="final_results">Write text or load a txt file and choose one of the options to the left.</p>
+            <div class="spinner-border text-primary" role="status" id="the_spinner">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.3.1.slim.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/phonetic_counter.js'%}"></script>
+</body>
+
+</html>

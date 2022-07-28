@@ -1,0 +1,100 @@
+body {
+  background-image: url("../img/background_dark.png") !important;
+}
+
+.my_navbar {
+
+  padding-bottom: 2px;
+  padding-top: 2px;
+  font-size: 1.3rem;
+
+/*  1st option*/
+/*
+  border-bottom: 2px solid #343a40;
+  background-image: url("../img/background_dark.png") !important;
+  background-color: #343a40;
+*/
+
+/*  2nd option*/
+  background-image: url("../img/background_dark.png"), url("../img/mix_dark40.png") !important;
+  background-blend-mode: overlay;
+}
+
+.dropdown-menu {
+  background-image: url("../img/background_light.png") !important;
+}
+
+.modal-content {
+  background-image: url("../img/background_light.png") !important;
+}
+
+
+textarea {
+  background-image: url("../img/background_light.png") !important;
+}
+
+
+.btn-outline-dark, .btn_outline-dark:hover {
+  background-image: url("../img/background_dark.png") !important;
+  color: #343a40 !important;
+/*
+  -webkit-transition:none !important;
+  -moz-transition:none !important;
+  -o-transition:none !important;
+  transition:none !important;
+*/
+}
+
+.card {
+  background-image: url("../img/background_light.png") !important;
+  /* margin-right: 15px; */
+  border: none !important;
+}
+
+.card-header {
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+/*  1st option*/
+/*  background-image: url("../img/background_dark.png") !important;*/
+
+/*  2nd option*/
+  background-image: url("../img/background_dark.png"), url("../img/mix_dark60.png") !important;
+  background-blend-mode: overlay;
+  color: #b6cc62;
+}
+
+
+#the_spinner {
+  visibility: hidden;
+}
+
+.count_button {
+  width: 15rem;
+}
+
+
+
+Helper borders
+
+/*
+#left_panel {
+  border: 3px solid coral !important;
+}
+
+#buttons {
+  border: 3px solid coral !important;
+}
+
+#first_button {
+  border: 3px solid blue !important;
+}
+
+#results {
+  border: 3px solid coral !important;
+}
+
+#low_panel {
+  border: 3px solid brown !important;
+}
+*/
